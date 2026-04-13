@@ -2,7 +2,7 @@
 Tarea #lV
 
 
-sing System;
+using System;
 using System.Collections.Generic;
 
 class Program
