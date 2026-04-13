@@ -1,0 +1,51 @@
+﻿using System;
+using System.Collections.Generic;
+
+class Program
+{
+    static void Main()
+    {
+        Queue<string> cola = new Queue<string>();
+        string opcion = "";
+
+        // Un bucle de limite "4" para las opciones
+        while (opcion != "4")
+        {
+            Console.WriteLine("\n1-Agregar | 2-Atender | 3-Ver cola | 4-Salir");
+            Console.Write("Elige: ");
+            opcion = Console.ReadLine();
+
+            // Llamadas a los métodos para cada opcion elegida
+            if (opcion == "1") Agregar(cola);
+            else if (opcion == "2") Atender(cola);
+            else if (opcion == "3") Mostrar(cola);
+        }
+    }
+
+    static void Agregar(Queue<string> c)
+    {
+        Console.Write("Nombre del cliente: ");
+        c.Enqueue(Console.ReadLine());
+        Mostrar(c); // Muestra la cola despues de la 
+    }
+
+    static void Atender(Queue<string> c)
+    {
+        // El if es para saber si se esta atendiendo a algien o si la cola esta vacia 
+        if (c.Count > 0)
+        {
+            Console.WriteLine("Atendiendo a: " + c.Dequeue());
+            Mostrar(c);
+        }
+        else
+        {
+            Console.WriteLine("Error: La cola está vacía, no hay a quién atender.");
+        }
+    }
+
+    static void Mostrar(Queue<string> c)
+    {
+        // El emtodo string.Join une los nombres de la cola con comas
+        Console.WriteLine("Cola actual: " + string.Join(", ", c));
+    }
+}
